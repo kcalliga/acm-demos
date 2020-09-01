@@ -1,0 +1,106 @@
+### namespace
+
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: namespace-httpd
+
+###  channel
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  name: namespace-httpd
+  namespace: namespace-httpd
+spec:
+    type: Namespace
+    pathname: namespace-httpd
+
+# Deployable
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Deployable
+metadata:
+  annotations:
+    apps.open-cluster-management.io/is-local-deployable: "false"
+  name: namespace-httpd
+  namespace: namespace-httpd
+spec:
+  template:
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      labels:
+        app: httpd
+      name: httpd-deployment
+      namespace: namespace-httpd
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: httpd
+      template:
+        metadata:
+          labels:
+            app: httpd
+        spec:
+          containers:
+          - image: httpd:latest
+            name: httpd
+            ports:
+            - containerPort: 80
+
+
+# Subscription
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: namespace-httpd
+  labels:
+    app: httpd
+
+spec:
+  channel: namespace-nginx/namespace-nginx
+  name: namespace-httpd
+  namespace: namespace-httpd
+  placement:
+    placementRef:
+      kind: PlacementRule
+      name: httpd-placement   
+
+# Application
+---
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: namespace-httpd
+  Namespace: namespace-httpd                     
+spec:
+  componentKinds:
+  - group: apps.open-cluster-management.io
+    kind: Subscription
+  descriptor: {}
+  selector:
+    matchExpressions:
+      - key:   app
+        operator: In
+        values:    
+        - httpd
+
+# placement rule
+
+---
+
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: httpd-placement
+  namespace: namespace-httpd
+spec:
+  clusterSelector:
+    matchExpressions: []
+    matchLabels:
+      environment: dev

@@ -63,7 +63,7 @@ metadata:
     app: httpd
 
 spec:
-  channel: namespace-nginx/namespace-nginx
+  channel: namespace-httpd/namespace-httpd
   name: namespace-httpd
   namespace: namespace-httpd
   placement:

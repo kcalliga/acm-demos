@@ -104,4 +104,4 @@ spec:
   clusterSelector:
     matchExpressions: []
     matchLabels:
-      name: jnp01
+      environment: dev

@@ -93,7 +93,7 @@ spec:
                      - apiGroups: [""]
                        kinds: ["Pod"]
                    namespaces:
-                     - "default"
+                     - "disallow-latest"
                  parameters:
                    tags: ["latest"]
 ---

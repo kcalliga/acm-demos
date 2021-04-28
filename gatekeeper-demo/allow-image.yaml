@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: opa-allowed
-  namespace: disallow-image
+  namespace: disallow-latest
 spec:
   containers:
     - name: opa

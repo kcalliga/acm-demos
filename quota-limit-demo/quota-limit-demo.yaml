@@ -32,7 +32,7 @@ spec:
                  namespace: quota-demo
                spec:
                  hard:
-                   pods: "4" 
+                   pods: "1" 
                    requests.cpu: "1" 
                    requests.memory: 1Gi 
                    requests.ephemeral-storage: 2Gi 

@@ -42,7 +42,7 @@ placementRef:
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-- name: policy-namespace-disallow-image
+- name: policy-namespace-disallow-latest
   kind: Policy
   apiGroup: policy.open-cluster-management.io
 ---

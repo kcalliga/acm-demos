@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: opa-allowed
+  name: pod1-quota-demo
 spec:
   containers:
     - name: opa

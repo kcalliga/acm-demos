@@ -15,7 +15,7 @@ spec:
       apiVersion: policy.open-cluster-management.io/v1
       kind: ConfigurationPolicy
       metadata:
-        name: <put name here>
+        name: resource-quota-object
       spec:
         remediationAction: enforce # will be overridden by remediationAction in parent policy
         severity: low

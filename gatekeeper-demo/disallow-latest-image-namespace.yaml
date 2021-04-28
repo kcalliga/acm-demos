@@ -1,7 +1,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: policy-namespace-disallow-image
+  name: policy-namespace-disallow-latest
   namespace: default
   annotations:
     policy.open-cluster-management.io/standards: NIST-CSF
@@ -15,7 +15,7 @@ spec:
       apiVersion: policy.open-cluster-management.io/v1
       kind: ConfigurationPolicy
       metadata:
-        name: policy-namespace-disallow-image
+        name: policy-namespace-disallow-latest
       spec:
         remediationAction: inform
         severity: low
@@ -30,15 +30,15 @@ spec:
               kind: Namespace
               apiVersion: v1
               metadata:
-                name: disallow-image
+                name: disallow-latest
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: binding-policy-namespace-disallow-image
+  name: binding-policy-namespace-disallow-latest
   namespace: default
 placementRef:
-  name: placement-policy-namespace-disallow-image
+  name: placement-policy-namespace-disallow-latest
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
@@ -49,7 +49,7 @@ subjects:
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: placement-policy-namespace-disallow-image
+  name: placement-policy-namespace-disallow-latest
   namespace: default
 spec:
   clusterConditions:

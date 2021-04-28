@@ -27,9 +27,9 @@ spec:
             objectDefinition:
                apiVersion: v1
                kind: ResourceQuota
-               namespace: quota-demo
                metadata:
                  name: compute-resources
+                 namespace: quota-demo
                spec:
                  hard:
                    pods: "4" 

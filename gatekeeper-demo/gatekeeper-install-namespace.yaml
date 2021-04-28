@@ -1,7 +1,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: policy-namespace
+  name: policy-namespace-gatekeeper-operator-install
   namespace: default
   annotations:
     policy.open-cluster-management.io/standards: NIST-CSF
@@ -35,21 +35,21 @@ spec:
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: binding-policy-namespace
+  name: binding-policy-namespace-gatekeeper-operator-install
   namespace: default
 placementRef:
-  name: placement-policy-namespace
+  name: placement-policy-namespace-gatekeeper-operator-install
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-- name: policy-namespace
+- name: policy-namespace-gatekeeper-operator-install
   kind: Policy
   apiGroup: policy.open-cluster-management.io
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: placement-policy-namespace
+  name: placement-policy-namespace-gatekeeper-operator-install
   namespace: default
 spec:
   clusterConditions:
